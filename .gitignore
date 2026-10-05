@@ -1,34 +1,24 @@
 # IDE
 .idea/
 .vscode/
-*.swp
-*.swo
-*.iml
 
-# Python virtual environments
+# Python
 venv/
-env/
-ENV/
-.venv/
-
-# Python cache
 __pycache__/
 *.py[cod]
-*$py.class
-*.so
 
-# Databases
+# Environment
+env/
+*.env
+
+# Database
 *.sqlite*
 *.db
 
-# Environment variables
-.env
-*.env
+# Django
+db.sqlite3
+local_settings.py
 
-# OS files
+# OS
 .DS_Store
 Thumbs.db
-desktop.ini
-
-# Logs
-*.log
