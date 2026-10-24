@@ -1,29 +1,22 @@
 from django.shortcuts import render
+from .models import Product, Contact
 
 
-def home(request):
-    """Контроллер главной страницы."""
-    return render(request, 'catalog/home.html')
+def home_page(request):
+    """Главная страница - вывод последних 5 продуктов"""
+    # Получаем последние 5 продуктов
+    latest_products = Product.objects.order_by('-created_at')[:5]
+
+    # Выводим в консоль (терминал, где запущен runserver)
+    print("\n=== Последние 5 продуктов ===")
+    for product in latest_products:
+        print(f"Продукт: {product.name} | Цена: {product.price} | Категория: {product.category.name}")
+    print("=============================\n")
+
+    return render(request, 'catalog/home.html', {'products': latest_products})
 
 
-def contacts(request):
-    """Контроллер страницы контактов с обработкой формы."""
-    success = False
-
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        message = request.POST.get('message')
-
-        # Выводим данные в консоль
-        print("\n" + "=" * 60)
-        print("📨 ПОЛУЧЕНА ФОРМА ОБРАТНОЙ СВЯЗИ")
-        print("-" * 60)
-        print(f"  Имя: {name}")
-        print(f"  Email: {email}")
-        print(f"  Сообщение: {message}")
-        print("=" * 60 + "\n")
-
-        success = True
-
-    return render(request, 'catalog/contacts.html', {'success': success})
+def contacts_page(request):
+    """Страница контактов"""
+    contacts = Contact.objects.all()
+    return render(request, 'catalog/contacts.html', {'contacts': contacts})
