@@ -16,46 +16,33 @@
 
 
 Django_Project/
-├── manage.py # Утилита командной строки Django
-├── requirements.txt # Зависимости проекта
-├── .env # Переменные окружения (не коммитится)
-├── .env.example # Шаблон переменных окружения
-├── .gitignore # Игнорируемые файлы
-├── README.md # Документация проекта
-│
-├── config/ # Настройки проекта
-│ ├── settings.py # Основные настройки
-│ ├── urls.py # Корневые URL-маршруты
-│ ├── wsgi.py # WSGI конфигурация
-│ └── asgi.py # ASGI конфигурация
-│
-├── catalog/ # Приложение каталога
-│ ├── models.py # Модели Category, Product, Contact
-│ ├── admin.py # Настройки админ-панели
-│ ├── views.py # Контроллеры (представления)
-│ ├── urls.py # Маршруты приложения
-│ ├── migrations/ # Миграции базы данных
-│ ├── fixtures/ # Фикстуры для тестовых данных
-│ │ ├── categories.json
-│ │ └── products.json
-│ └── management/ # Кастомные команды
-│ └── commands/
-│ └── populate_db.py
-│
-├── templates/ # HTML шаблоны
-│ └── catalog/
-│ ├── base.html # Базовый шаблон
-│ ├── home.html # Главная страница
-│ └── contacts.html # Страница контактов
-│
-├── static/ # Статические файлы
-│ └── css/
-│ └── style.css # Стили
-│
-├── media/ # Загруженные пользователями файлы
-│ └── products/ # Изображения продуктов
-│
-└── screenshots/ # Скриншоты для домашки
+├── catalog/
+│   ├── forms.py                    ← НОВЫЙ
+│   ├── views.py                    ← ОБНОВЛЁН
+│   ├── urls.py                     ← ОБНОВЛЁН
+│   ├── models.py                   ← без изменений
+│   ├── admin.py                    ← без изменений
+│   ├── management/
+│   │   └── commands/populate_db.py ← без изменений
+│   └── fixtures/
+│       ├── categories.json
+│       ── products.json
+├── templates/
+│   └── catalog/
+│       ├── base.html               ← ОБНОВЛЁН
+│       ├── menu.html               ← НОВЫЙ
+│       ├── home.html               ← ОБНОВЛЁН
+│       ├── contacts.html           ← без изменений
+│       ├── product_detail.html     ← НОВЫЙ
+│       └── add_product.html        ← НОВЫЙ
+├── config/
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+├── static/css/style.css
+├── media/products/
+├── requirements.txt
+└── manage.py
 
 
 ## 🛠️ Установка и запуск
